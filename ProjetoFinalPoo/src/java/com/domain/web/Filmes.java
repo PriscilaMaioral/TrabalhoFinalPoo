@@ -35,6 +35,13 @@ public class Filmes {
         s.close();
         return u;
     }
+    
+   public void setFilmes(String nome, String genero, int duracao, String diretor, Date lancamento, int elenco) throws SQLException {
+       String SQL = "insert into filmes (nm_filme, ds_genero, qt_duracao, nm_diretor, dt_lancamento, cd_elenco) values ('"+nome+"','"+genero+"',"+duracao+",'"+diretor+"',"+lancamento+","+elenco+")";
+       PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+       s.executeQuery();
+       
+   }
 
     public Filmes(int cd_filme, String nm_filme, String ds_genero, int qt_duracao, String nm_diretor, Date dt_lancamento, int cd_elenco) {
         this.cd_filme = cd_filme;

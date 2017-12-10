@@ -31,6 +31,12 @@ public class Atores {
         s.close();
         return u;
     }
+    
+    public static void setAtores(String nome, Date nascimento, String nacionalidade) throws SQLException {
+        String SQL = "insert into atores (nm_ator, dt_nascimento, ds_nacionalidade) values ('"+nome+"',"+nascimento+", '"+nacionalidade+"')";
+       PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+       s.executeQuery();
+    }
 
     public int getCd_ator() {
         return cd_ator;

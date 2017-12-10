@@ -31,6 +31,12 @@ public class Usuario {
         s.close();
         return u;
     }
+    
+    public static void setUsuario(String nome, String login, Date nascimento, String senha ) throws SQLException{
+       String SQL = "insert into users (nm_usuario, nm_login, dt_nascimento, pass_hash) values ('"+nome+"','"+login+"', "+nascimento+",'"+senha+"')";
+       PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+       s.executeQuery();
+    }
 
     public Usuario(int cd_usuario, String nm_usuario, String nm_login, Date dt_nascimento, String string2) {
         this.cd_usuario = cd_usuario;
