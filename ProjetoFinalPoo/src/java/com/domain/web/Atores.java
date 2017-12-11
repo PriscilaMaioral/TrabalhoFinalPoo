@@ -4,38 +4,52 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Atores {
 
-    public Atores(int aInt, String string, Date date, String string1) {
+    public Atores(int cdAtor, String nmAtor, Date nasc, String nacionalidade) {
+    cd_ator = cdAtor;
+    nm_ator = nmAtor;
+    dt_nascimento = nasc;
+    ds_nacionalidade = nacionalidade;
+    
+    }
+
+    public Atores() {
     }
     private int cd_ator;
     private String nm_ator;
     private Date dt_nascimento;
     private String ds_nacionalidade;
     
-    public static Atores getAtores(String login, String password) throws SQLException{
-        String SQL ="SELECT * FROM atores";
-        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+    public static ArrayList<Atores> getTodosAutores() throws SQLException{
+        String SQL ="SELECT * FROM ator";
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
        
-       
+        ArrayList<Atores> list = new ArrayList<>();
         ResultSet rs = s.executeQuery();
         Atores u = null;
-        if(rs.next()){
+        while(rs.next()){
             u = new Atores (rs.getInt("cd_ator")
                     ,  rs.getString("nm_ator")
                     ,  rs.getDate("dt_nascimento")
                     ,  rs.getString("ds_nacionalidade"));
+            list.add(u);
         }
+        
         rs.close();
         s.close();
-        return u;
+        return list;
     }
     
-    public static void setAtores(String nome, Date nascimento, String nacionalidade) throws SQLException {
-        String SQL = "insert into atores (nm_ator, dt_nascimento, ds_nacionalidade) values ('"+nome+"',"+nascimento+", '"+nacionalidade+"')";
-       PreparedStatement s = Database.getConnection().prepareStatement(SQL);
-       s.executeQuery();
+    public static void setCadastroAtores() throws SQLException {
+       String SQL = "insert into ator (nm_ator, ds_nacionalidade) values ('luiz2','brhue')";
+       PreparedStatement s = Conexao.conectar().prepareStatement(SQL); 
+       s.executeUpdate();
+       s.close();
+       
     }
 
     public int getCd_ator() {
