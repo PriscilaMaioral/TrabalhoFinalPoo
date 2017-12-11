@@ -81,6 +81,84 @@ public class Avaliacao {
         return u;
     }
     
+    public static Avaliacao buscarAvaliacaoDoUsuario(int cdUsuario) throws SQLException{
+        String SQL ="a.cd_avaliacao, u.nm_usuario, f.nm_filme, a.dt_avaliacao, a.nr_avaliacao, a.ds_comentario from avaliacao a "
+                + "inner join usuario u on a.cd_usuario=u.cd_usuario "
+                + "inner join filme f on a.cd_filme=f.cd_filme where "
+                + "cd_usuario = "+cdUsuario;
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
+       
+        
+        ResultSet rs = s.executeQuery();
+        Avaliacao u = null;
+        while(rs.next()){
+            u = new Avaliacao (rs.getInt("cd_avaliacao")
+                    ,  rs.getString("nm_usuario")
+                    ,  rs.getString("nm_filme")
+                    ,  rs.getDate("dt_avaliacao")
+                    ,  rs.getInt("nr_avaliacao")
+                    ,  rs.getString("ds_comentario"));
+            
+        }
+        
+        rs.close();
+        s.close();
+        return u;
+    }
+    
+    public static Avaliacao buscarAvaliacoesDoFilme(int cdFilme) throws SQLException{
+        String SQL ="a.cd_avaliacao, u.nm_usuario, f.nm_filme, a.dt_avaliacao, a.nr_avaliacao, a.ds_comentario from filme f "
+                + "inner join usuario u on f.cd_filme=u.cd_filme "
+                + "inner join avaliacao a on f.cd_filme=a.cd_filme where "
+                + "cd_filme = "+cdFilme;
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
+       
+        
+        ResultSet rs = s.executeQuery();
+        Avaliacao u = null;
+        while(rs.next()){
+            u = new Avaliacao (rs.getInt("cd_avaliacao")
+                    ,  rs.getString("nm_usuario")
+                    ,  rs.getString("nm_filme")
+                    ,  rs.getDate("dt_avaliacao")
+                    ,  rs.getInt("nr_avaliacao")
+                    ,  rs.getString("ds_comentario"));
+            
+        }
+        
+        rs.close();
+        s.close();
+        return u;
+    }
+    
+    public static Avaliacao buscarAvaliacoesDoUsuario(int cdUsuario) throws SQLException{
+        String SQL ="a.cd_avaliacao, u.nm_usuario, f.nm_filme, a.dt_avaliacao, a.nr_avaliacao, a.ds_comentario from usuario u "
+                + "inner join filme f on u.cd_usuario=u.cd_usuario "
+                + "inner join avaliacao a on u.cd_filme=a.cd_filme where "
+                + "cd_usuario = "+cdUsuario;
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
+       
+        
+        ResultSet rs = s.executeQuery();
+        Avaliacao u = null;
+        while(rs.next()){
+            u = new Avaliacao (rs.getInt("cd_avaliacao")
+                    ,  rs.getString("nm_usuario")
+                    ,  rs.getString("nm_filme")
+                    ,  rs.getDate("dt_avaliacao")
+                    ,  rs.getInt("nr_avaliacao")
+                    ,  rs.getString("ds_comentario"));
+            
+        }
+        
+        rs.close();
+        s.close();
+        return u;
+    }
+    
     
     
     public static void criarAvaliacao(int avaliacao, int cdUsuario, int cdFilme, String comentario) throws SQLException{

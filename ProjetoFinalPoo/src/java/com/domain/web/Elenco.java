@@ -65,9 +65,31 @@ public class Elenco {
     
     }
     
-    public static ArrayList<Atores> BuscarElenco (int cdFilme) throws SQLException {
+    public static ArrayList<Atores> BuscarElencoFilme (int cdFilme) throws SQLException {
         
     String SQL = "select a.nm_ator from ator a inner join elenco e on a.cd_ator=e.cd_ator where e.cd_filme ="+cdFilme;
+       PreparedStatement s; 
+        s = Conexao.conectar().prepareStatement(SQL);
+        ArrayList<Atores> list = new ArrayList<>();
+        ResultSet rs = s.executeQuery();
+        
+        Atores u = null;
+        
+        while(rs.next()){
+            u = new Atores(rs.getString("nm_ator"));
+            list.add(u);
+        }
+       
+       rs.close();
+       s.close();
+    
+        return list;
+    
+    }
+    
+    public static ArrayList<Atores> BuscarElencosDoAtor (int cdAtor) throws SQLException {
+        
+    String SQL = "select f.nm_filme from filme f inner join elenco e on f.cd_ator=e.cd_ator where e.cd_ator ="+cdAtor;
        PreparedStatement s; 
         s = Conexao.conectar().prepareStatement(SQL);
         ArrayList<Atores> list = new ArrayList<>();
