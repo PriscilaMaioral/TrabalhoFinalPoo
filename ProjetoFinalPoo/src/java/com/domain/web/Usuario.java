@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Usuario {
     private int cd_usuario;
@@ -12,12 +13,12 @@ public class Usuario {
     private Date dt_nascimento;
     private String passwordHash;
     
-    public static Usuario getUsuario(String login, String password) throws SQLException{
-        String SQL ="SELECT * FROM usuario WHERE login=? AND pass_hash=?";
-        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
-        s.setString(1, login);
-        s.setString(2, password.hashCode()+"");
-       
+    public static ArrayList<Usuario> listarTodosUsuario() throws SQLException{
+        String SQL ="SELECT * FROM usuario";
+        PreparedStatement s = Conexao.conectar().prepareStatement(SQL);
+        /*s.setString(1, login);
+        s.setString(2, password.hashCode()+"");*/
+        ArrayList<Usuario> lista = new ArrayList<>();
         ResultSet rs = s.executeQuery();
         Usuario u = null;
         if(rs.next()){
@@ -26,16 +27,19 @@ public class Usuario {
                     , rs.getString("nm_login")
                     , rs.getDate("dt_nascimento")
                     , rs.getString("pass_hash"));
+            lista.add(u);
+                   
         }
         rs.close();
         s.close();
-        return u;
+        return lista;
     }
     
     public static void setUsuario(String nome, String login, Date nascimento, String senha ) throws SQLException{
        String SQL = "insert into users (nm_usuario, nm_login, dt_nascimento, pass_hash) values ('"+nome+"','"+login+"', "+nascimento+",'"+senha+"')";
-       PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+       PreparedStatement s = Conexao.conectar().prepareStatement(SQL);
        s.executeQuery();
+       s.close();
     }
 
     public Usuario(int cd_usuario, String nm_usuario, String nm_login, Date dt_nascimento, String string2) {

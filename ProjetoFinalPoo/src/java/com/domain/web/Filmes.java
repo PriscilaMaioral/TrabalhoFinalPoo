@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 
 public class Filmes {
@@ -13,44 +15,126 @@ public class Filmes {
     private int qt_duracao;
     private String nm_diretor;
     private Date dt_lancamento;
-    private int cd_elenco; 
     
-    public static Filmes getFilmes(int cd_filme, String nm_filme) throws SQLException{
-        String SQL ="SELECT * FROM filmes";
-        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+    
+    public static Filmes listarTodosFilmes() throws SQLException{
+        String SQL ="SELECT * FROM filme";
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
        
-       
+        ArrayList<Filmes> lista = new ArrayList<>();
+        
         ResultSet rs = s.executeQuery();
         Filmes u = null;
         if(rs.next()){
             u = new Filmes (rs.getInt("cd_filme")
                     , rs.getString("nm_filme")
-                    , rs.getString("ds_genero")
-                    , rs.getInt("qt_duracao")
-                    , rs.getString("nm_diretor")
                     , rs.getDate("dt_lancamento")
-                    , rs.getInt("cd_elenco"));
+                    , rs.getInt("qt_duracao")
+                    , rs.getString("ds_diretor")
+                    , rs.getString("nm_diretor"));
+            lista.add(u);
         }
         rs.close();
         s.close();
         return u;
     }
     
-   public void setFilmes(String nome, String genero, int duracao, String diretor, Date lancamento, int elenco) throws SQLException {
-       String SQL = "insert into filmes (nm_filme, ds_genero, qt_duracao, nm_diretor, dt_lancamento, cd_elenco) values ('"+nome+"','"+genero+"',"+duracao+",'"+diretor+"',"+lancamento+","+elenco+")";
-       PreparedStatement s = Database.getConnection().prepareStatement(SQL);
-       s.executeQuery();
+    public static Filmes buscarFilme(String nome, Date lancmin, Date lancmax, int durmin, int durmax, String genero, String diretor) throws SQLException{
+        String SQL ="";
+        
+        
+        if (!"".equals(nome) && !"".equals(genero) && !"".equals(diretor)) {
+            SQL = "select * from filme where nm_filme = '"+nome+"' AND ds_genero = '"+genero+"' AND nm_diretor = '"+diretor+"'";
+        }else if (!"".equals(nome) && !"".equals(genero) && !"".equals(diretor)) {
+            SQL = "select * from filme where nm_filme = '"+nome+"' AND ds_genero = '"+genero+"' AND nm_diretor = '"+diretor+"'";
+        }else if (!"".equals(nome) && !"".equals(genero)){
+            SQL = "select * from filme where nm_filme = '"+nome+"' AND ds_genero = '"+genero+"'";
+        }else if (!"".equals(nome)&&!"".equals(diretor)){
+            SQL = "select * from filme where nm_filme = '"+nome+"' AND nm_diretor = '"+diretor+"'";
+        }else if (!"".equals(genero) && !"".equals(diretor)){
+            SQL = "select * from filme where AND ds_genero = '"+genero+"' AND nm_diretor = '"+diretor+"'";
+        }else if (!"".equals(nome)){
+            SQL = "select * from filme where nm_filme = '"+nome+"'";
+        }else if (!"".equals(genero)){
+             SQL = "select * from filme where ds_genero = '"+genero+"'";
+        }else if (!"".equals(diretor)) {
+            SQL = "select * from filme where nm_diretor = '"+diretor+"'";
+        }else if (lancmin!=null && lancmax != null){
+            SQL = "select * from filme where dt_lancamento >=" + lancmin + " and dt_lancamento <= "+lancmax;
+        }else if (durmin > 0 && durmax > 0){
+            SQL = "select * from filme where qt_dur >=" + durmin + " and qt_durmax <= "+durmax;
+        }
+        
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
+       
+        ArrayList<Filmes> lista = new ArrayList<>();
+        
+        ResultSet rs = s.executeQuery();
+        Filmes u = null;
+        if(rs.next()){
+            u = new Filmes (rs.getInt("cd_filme")
+                    , rs.getString("nm_filme")
+                    , rs.getDate("dt_lancamento")
+                    , rs.getInt("qt_duracao")
+                    , rs.getString("ds_diretor")
+                    , rs.getString("nm_diretor"));
+            lista.add(u);
+        }
+        rs.close();
+        s.close();
+        return u;
+    }
+    
+    
+    
+   public void cadastrarFilmes(String nome, Date lancamento, int duracao, String genero, String diretor) throws SQLException {
+       String SQL = "insert into filme (nm_filme, dt_lancamento, qt_duracao, ds_genero, nm_diretor) values (?,?,?,?,?)";
+       PreparedStatement s = Conexao.conectar().prepareStatement(SQL);
+       s.setString(1, nome);
+       s.setDate(2, lancamento);
+       s.setInt(3, duracao);
+       s.setString(4, genero);
+       s.setString(5, diretor);
+       s.executeUpdate();
+       s.close();
+       
+   }
+   
+   public void alterarFilme(int cdFilme, String nome, Date lancamento, int duracao, String genero, String diretor) throws SQLException {
+       String SQL = "update filme set nm_filme = ?, dt_lancamento=?, qt_duracao=?, ds_genero=?, nm_diretor=?) where cd_filme = "+cdFilme;
+       PreparedStatement s = Conexao.conectar().prepareStatement(SQL);
+       s.setString(1, nome);
+       s.setDate(2, lancamento);
+       s.setInt(3, duracao);
+       s.setString(4, genero);
+       s.setString(5, diretor);
+       s.executeUpdate();
+       s.close();
+       
+   }
+   
+   public void removerFilme (int cdFilme) throws SQLException {
+       String SQL = "delete from filme where cd_filme = ?";
+       PreparedStatement s = Conexao.conectar().prepareStatement(SQL);
+       s.setInt(1, cdFilme);
+       s.executeUpdate();
+       s.close();
        
    }
 
-    public Filmes(int cd_filme, String nm_filme, String ds_genero, int qt_duracao, String nm_diretor, Date dt_lancamento, int cd_elenco) {
+    public Filmes() {
+    }
+
+    public Filmes(int cd_filme, String nm_filme, Date dt_lancamento, int qt_duracao, String ds_genero, String nm_diretor) {
         this.cd_filme = cd_filme;
         this.nm_filme = nm_filme;
         this.ds_genero = ds_genero;
         this.qt_duracao = qt_duracao;
         this.nm_diretor = nm_diretor;
         this.dt_lancamento = dt_lancamento;
-        this.cd_elenco = cd_elenco;
+        
     }
 
     public int getCd_filme() {
@@ -101,11 +185,5 @@ public class Filmes {
         this.dt_lancamento = dt_lancamento;
     }
 
-    public int getCd_elenco() {
-        return cd_elenco;
-    }
-
-    public void setCd_elenco(int cd_elenco) {
-        this.cd_elenco = cd_elenco;
-    }
+    
 }
