@@ -9,11 +9,15 @@
     <li class="nav-item">
       <a class="nav-link" href="listafilmes.jsp">Filmes</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="loginusuario.jsp">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="loginusuario.jsp">Cadastro</a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Cadastros
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Cadastro de ator</a>
+        <a class="dropdown-item" href="#">Cadastro de genêro</a>
+        <a class="dropdown-item" href="#">Cadastro de filme</a>
+      </div>
     </li>
   </ul>
    </form>     
