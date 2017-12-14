@@ -17,32 +17,43 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     </head>
-    <body>
-          <%@include file="WEB-INF/header.jspf"%>
+    <body style="background:url(img/BANN1.jpg);">
+          <!--<%@include file="WEB-INF/header.jspf"%>-->
         <center>
-          <div class="col-sm-8" align="center" style="background-color:white; border-radius: 20px; margin: 30px;">
+        <div class="container-fluid" style="margin-top: 10%;">
+          <div class="col-md-8 col-sm-12 col-xs-12" align="center" style="background-color:white; border-radius: 20px;">
              <table class="table">
                <thead class="thead-dark">
                    <tr>
                       <th>Nome do Filme</th>
+                      <th>Genero</th>
+                      <th>Duração</th>
+                      <th>Lançamento</th>
+                      <th>Elenco</th>
                       <th>Nota</th>
-                      <th>descrição</th>
                    </tr>
               </thead>
               <tbody>
                    <tr>
-                       <td>Pocaroupa</td>
-                       <td>69</td>
-                       <td>o pai de pouca roupa não quer deixar ela dar</td>
+                       <td>Avengers</td>
+                       <td>Ação</td>
+                       <td>1:39</td>
+                       <td>10/07/2016</td>
+                       <td>Tony Stark</td>
+                       <td>4</td>
                   </tr>
                   <tr>
-                       <td>O gay leão</td>
-                       <td>24</td>
-                       <td>pq oq eu quero mais é ser gay</td>
+                       <td>Spider Man</td>
+                       <td>Ação</td>
+                       <td>1:40</td>
+                       <td>10/07/2017</td>
+                       <td>Peter Parker</td>
+                       <td>3</td>
                   </tr>
                </tbody>
              </table> 
           </div>
-        </center>
+       </div>
+      </center>
     </body>
 </html>

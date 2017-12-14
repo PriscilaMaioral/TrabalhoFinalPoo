@@ -1,3 +1,10 @@
+<%-- 
+    Document   : resultadopesquisa
+    Created on : 14/12/2017, 21:55:25
+    Author     : Danilo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +18,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     </head>
     <body style="background:url(img/BANN1.jpg);">
-          <!--<%@include file="WEB-INF/header.jspf"%>-->
+        <%@include file="WEB-INF/header.jspf"%>
         <center>
         <div class="container-fluid" style="margin-top: 10%;">
           <div class="col-md-8 col-sm-12 col-xs-12" align="center" style="background-color:white; border-radius: 20px;">

@@ -1,3 +1,10 @@
+<%-- 
+    Document   : cadastroator
+    Created on : 14/12/2017, 21:44:34
+    Author     : Danilo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>

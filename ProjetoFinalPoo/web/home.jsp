@@ -1,3 +1,10 @@
+<%-- 
+    Document   : home
+    Created on : 14/12/2017, 21:51:50
+    Author     : Danilo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -11,9 +18,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
-  <?php include("../includes/menu.php");?>
 
-      <section id="section-1" style="width: 100%; height: 100%; min-height: 850px; background-image: url('../img/BANN1.jpg'); background-repeat: no-repeat; background-attachment:static; background-size: cover;">
+      <section id="section-1" style="width: 100%; height: 100%; min-height: 850px; background-image: url('img/BANN1.jpg'); background-repeat: no-repeat; background-attachment:static; background-size: cover;">
         <br><br><br><br>
         <div class="container-fluid">
           <div class="card" style="background-color: #222222; color: white;" align="center">
@@ -41,7 +47,7 @@
         </div>
       </section>
 
-      <section id="section-2" style="width: 100%; height: 100%; min-height: 800px; background-image: url('../img/BANN2.jpg'); background-repeat: no-repeat; background-attachment: static; background-size: cover;">
+      <section id="section-2" style="width: 100%; height: 100%; min-height: 800px; background-image: url('img/BANN2.jpg'); background-repeat: no-repeat; background-attachment: static; background-size: cover;">
         <br><br><br><br>
         <div class="container-fluid">
           <div class="card">
@@ -92,7 +98,7 @@
           <center>
               <div class="col-md-6" style="height: 100%; min-height:200px;">
                 <figure class="figure" align="center">
-                <img src="../img/cadastro.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <img src="img/cadastro.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                 <h4><a href="login.html">Entrar no meu perfil</a></h4>
                 <hr>
               </figure>

@@ -1,3 +1,10 @@
+<%-- 
+    Document   : cadastrousuario
+    Created on : 14/12/2017, 21:50:19
+    Author     : Danilo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -23,7 +30,7 @@
 						<br><br><br>
 							<div class="card">
 							  <div class="card-body">
-							    <H2 class="display-4">CADASTRO ATORES</H2>
+							    <H2 class="display-4">CADASTRO USUÁRIO</H2>
 							  </div>
 							</div>
 						</section>
@@ -31,16 +38,24 @@
 							<div class="card">
 							  <div class="jumbotron">
 									<!--form cadastro ator-->
-								  <form action="cadastro_ator.jsp" method="post">
+								  <form action="cadastro_genero.jsp" method="post">
 								   <div class="form-group">
-										<label for="c_nome">Nome:</label>
-										<input type="text" class="form-control" name="c_nome_ator" placeholder="Digite o nome completo do ator">
+										<label for="c_nome_usuario">Nome:</label>
+										<input type="text" class="form-control" name="c_nome_usuario" placeholder="Digite o nome">
 								  	</div>
-								   <div class="form-group">
-										<label for="c_nacionalidade">Nacionalidade:</label>
-										<input type="text" class="form-control" name="c_nacionalidade" placeholder="Nacionalidade do ator">
+				    			   <div class="form-group">
+										<label for="c_email_usuario">Email:</label>
+										<input type="email" class="form-control" name="c_email_usuario" placeholder="Digite o email">
 								  	</div>
-									  <button type="submit" class="btn btn-primary">Cadastrar</button>		
+								    <div class="form-group">
+										<label for="senha_usuario">Senha:</label>
+										<input type="password" class="form-control" name="c_senha_usuario" placeholder="Digite a senha">
+								  	</div>
+						  		    <div class="form-group">
+										<label for="senha_usuario_confirm">Confirmar Senha:</label>
+										<input type="password" class="form-control" name="senha_usuario_confirm" placeholder="Digite a senha">
+								  	</div>
+									<button type="submit" class="btn btn-primary">Cadastrar</button>		
 								</form>
 									<!--form-->
 							 </div>

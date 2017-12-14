@@ -1,3 +1,10 @@
+<%-- 
+    Document   : cadastrogenero
+    Created on : 14/12/2017, 21:47:31
+    Author     : Danilo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -23,7 +30,7 @@
 						<br><br><br>
 							<div class="card">
 							  <div class="card-body">
-							    <H2 class="display-4">CADASTRO ATORES</H2>
+							    <H2 class="display-4">CADASTRO GÊNERO</H2>
 							  </div>
 							</div>
 						</section>
@@ -31,16 +38,12 @@
 							<div class="card">
 							  <div class="jumbotron">
 									<!--form cadastro ator-->
-								  <form action="cadastro_ator.jsp" method="post">
+								  <form action="cadastro_genero.jsp" method="post">
 								   <div class="form-group">
-										<label for="c_nome">Nome:</label>
-										<input type="text" class="form-control" name="c_nome_ator" placeholder="Digite o nome completo do ator">
+										<label for="c_genero">Gênero:</label>
+										<input type="text" class="form-control" name="c_genero" placeholder="Digite o tipo de genero">
 								  	</div>
-								   <div class="form-group">
-										<label for="c_nacionalidade">Nacionalidade:</label>
-										<input type="text" class="form-control" name="c_nacionalidade" placeholder="Nacionalidade do ator">
-								  	</div>
-									  <button type="submit" class="btn btn-primary">Cadastrar</button>		
+									<button type="submit" class="btn btn-primary">Cadastrar</button>		
 								</form>
 									<!--form-->
 							 </div>
