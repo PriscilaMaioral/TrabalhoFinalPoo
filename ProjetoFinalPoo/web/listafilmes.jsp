@@ -1,4 +1,7 @@
-
+<%@page import="com.domain.web.Atores"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.domain.web.Filmes"%>
+<%@page import="com.domain.web.Avaliacao"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,31 +23,47 @@
           <div class="col-md-8 col-sm-12 col-xs-12" align="center" style="background-color:white; border-radius: 20px;">
              <table class="table">
                <thead class="thead-dark">
+                   
                    <tr>
-                      <th>Nome do Filme</th>
+                      <th></th>
                       <th>Genero</th>
                       <th>Duração</th>
                       <th>Lançamento</th>
-                      <th>Elenco</th>
+                      <th>Diretor</th>
                       <th>Nota</th>
                    </tr>
               </thead>
               <tbody>
+                  
+                  <%try{%>
+                  <% for(Filmes f : Filmes.listarTodosFilmes()){%>
                    <tr>
-                       <td>Avengers</td>
-                       <td>Ação</td>
-                       <td>1:39</td>
-                       <td>10/07/2016</td>
-                       <td>Tony Stark</td>
-                       <td>4</td>
+                       <td><%=f.getNm_filme()%></td>
+                       <td><%=f.getDs_genero()%></td>
+                       <td><%=f.getQt_duracao()%></td>
+                       <td><%=f.getDt_lancamento()%></td>
+                       <td><%=f.getNm_diretor()%></td>
+                       <td><%=f.getNr_avaliacao()%></td>
                   </tr>
+                  
+                  <%}%>
+                  <%}catch(Exception ex){%>
+                <tr>
+                    <td colspan="5">
+                        Erro ao carregar a lista: <%=ex.getMessage()%>
+                    </td>
+                </tr>
+           <%}%> 
+              
+                
+           
                   <tr>
-                       <td>Spider Man</td>
+                      <td><%//Atores.buscaTESTE(1)%></td>
                        <td>Ação</td>
                        <td>1:40</td>
                        <td>10/07/2017</td>
                        <td>Peter Parker</td>
-                       <td>3</td>
+                       <td>pontuacao</td>
                   </tr>
                </tbody>
              </table> 

@@ -25,11 +25,27 @@ public class Teste {
         
         for(Atores a : lista){
             System.out.println(a.getNm_ator());
+        }*/
+        
+        ArrayList<Filmes> lista;
+        lista = Filmes.listarTodosFilmes();
+        
+        for (Filmes f: lista) {
+            System.out.println(f.getNm_filme());
+            System.out.println(f.getDs_genero());
+            System.out.println(f.getDt_lancamento());
+            System.out.println(f.getQt_duracao());
+            System.out.println(f.getNm_diretor());
+            System.out.println(f.getNr_avaliacao());
+            
+            
         }
+        
+        System.out.println(Atores.buscaTESTE(1));
         
         //Atores.setCadastroAtores();
         
-        
+        /*
         
         Date data = new Date(2010,0,25);
         

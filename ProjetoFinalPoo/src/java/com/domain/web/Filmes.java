@@ -15,9 +15,12 @@ public class Filmes {
     private int qt_duracao;
     private String nm_diretor;
     private Date dt_lancamento;
+    private float nr_avaliacao;
+
     
     
-    public static Filmes listarTodosFilmes() throws SQLException{
+    
+    public static ArrayList<Filmes> listarTodosFilmes() throws SQLException{
         String SQL ="SELECT * FROM filme";
         PreparedStatement s;
         s = Conexao.conectar().prepareStatement(SQL);
@@ -25,19 +28,25 @@ public class Filmes {
         ArrayList<Filmes> lista = new ArrayList<>();
         
         ResultSet rs = s.executeQuery();
-        Filmes u = null;
-        if(rs.next()){
+        Filmes u;
+        while(rs.next()){
             u = new Filmes (rs.getInt("cd_filme")
                     , rs.getString("nm_filme")
                     , rs.getDate("dt_lancamento")
                     , rs.getInt("qt_duracao")
-                    , rs.getString("ds_diretor")
+                    , rs.getString("ds_genero")
                     , rs.getString("nm_diretor"));
+            u.setNr_avaliacao(Avaliacao.avaliacaoMediaFilme(rs.getInt("cd_filme")));
             lista.add(u);
         }
+       
+        
+        
+        
+        
         rs.close();
         s.close();
-        return u;
+        return lista;
     }
     
     public static Filmes buscarFilme(String nome, Date lancmin, Date lancmax, int durmin, int durmax, String genero, String diretor) throws SQLException{
@@ -71,6 +80,8 @@ public class Filmes {
        
         ArrayList<Filmes> lista = new ArrayList<>();
         
+        
+        
         ResultSet rs = s.executeQuery();
         Filmes u = null;
         if(rs.next()){
@@ -82,6 +93,8 @@ public class Filmes {
                     , rs.getString("nm_diretor"));
             lista.add(u);
         }
+        
+       
         rs.close();
         s.close();
         return u;
@@ -135,6 +148,14 @@ public class Filmes {
         this.nm_diretor = nm_diretor;
         this.dt_lancamento = dt_lancamento;
         
+    }
+    
+    public float getNr_avaliacao() {
+        return nr_avaliacao;
+    }
+
+    public void setNr_avaliacao(float nr_avaliacao) {
+        this.nr_avaliacao = nr_avaliacao;
     }
 
     public int getCd_filme() {

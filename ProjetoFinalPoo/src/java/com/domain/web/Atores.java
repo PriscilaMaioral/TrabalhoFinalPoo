@@ -93,6 +93,21 @@ public class Atores {
        s.close();
     }
     
+    public static String buscaTESTE (int cdAtor) throws SQLException {
+       String SQL = "select nm_ator from ator where cd_ator = "+cdAtor;
+       PreparedStatement s;
+       s = Conexao.conectar().prepareStatement(SQL); 
+       ResultSet rs;
+       rs = s.executeQuery();
+       String aux = "";
+       while (rs.next()){
+           aux = rs.getString("nm_ator");
+       }
+       rs.close();
+       s.close();
+       return aux;
+    }
+    
     
     public static void cadastroAtor(String ator, Date data, String nacionalidade) throws SQLException {
        String SQL = "insert into ator (nm_ator, dt_nascimento, ds_nacionalidade) values (?,?,?)";

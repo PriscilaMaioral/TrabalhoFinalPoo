@@ -82,7 +82,7 @@ public class Avaliacao {
     }
     
     public static Avaliacao buscarAvaliacaoDoUsuario(int cdUsuario) throws SQLException{
-        String SQL ="a.cd_avaliacao, u.nm_usuario, f.nm_filme, a.dt_avaliacao, a.nr_avaliacao, a.ds_comentario from avaliacao a "
+        String SQL ="select a.cd_avaliacao, u.nm_usuario, f.nm_filme, a.dt_avaliacao, a.nr_avaliacao, a.ds_comentario from avaliacao a "
                 + "inner join usuario u on a.cd_usuario=u.cd_usuario "
                 + "inner join filme f on a.cd_filme=f.cd_filme where "
                 + "cd_usuario = "+cdUsuario;
@@ -105,6 +105,21 @@ public class Avaliacao {
         rs.close();
         s.close();
         return u;
+    }
+    
+    public static float avaliacaoMediaFilme(int cdFilme) throws SQLException{
+        float aux = 0;
+        String SQL = "select AVG(nr_avaliacao) from avaliacao where cd_filme = "+cdFilme;
+        PreparedStatement s;
+        s = Conexao.conectar().prepareStatement(SQL);
+        ResultSet rs = s.executeQuery();
+        while (rs.next()){
+         aux = rs.getFloat("AVG(nr_avaliacao)");   
+        }
+        
+        rs.close();
+        s.close();
+        return aux;
     }
     
     public static Avaliacao buscarAvaliacoesDoFilme(int cdFilme) throws SQLException{
