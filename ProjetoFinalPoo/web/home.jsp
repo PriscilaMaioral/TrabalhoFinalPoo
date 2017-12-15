@@ -1,8 +1,4 @@
-<%-- 
-    Document   : home
-    Created on : 14/12/2017, 21:51:50
-    Author     : Danilo
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,15 +27,10 @@
           <br> 
           <div class="card">
           <div class="card-header">
-             <h2 class="card-title">TOP FILMES</h2>
+             <h2 class="card-title">BEM VINDOS!</h2>
           </div>
           <div class="card-body">
-            <p class="card-text" style="font-size: 120%;" align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="card-text" style="font-size: 120%;" align="justify">Último projeto apresentado para a disciplina de Programação Orientada a Objeto. Projeto Filmes é um site para avaliação de filmes e descobrir sobre os novos lançamentos e quais podem interessar a você. Bem Vindo!</p>
             
           </div>
         </div>   
@@ -92,14 +83,14 @@
         <div class="container">
           <h2 class="display-4" align="center">ENTRAR</h2>
           <hr>
-            <a href="cadastro_usuario.html"><h4 align="center">Não tenho conta</h4></a>
+            <a href="cadastrousuario.jsp"><h4 align="center">Não tenho conta</h4></a>
             <br>  
           <br><br>
           <center>
               <div class="col-md-6" style="height: 100%; min-height:200px;">
                 <figure class="figure" align="center">
                 <img src="img/cadastro.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                <h4><a href="login.html">Entrar no meu perfil</a></h4>
+                <h4><a href="loginusuario.jsp">Entrar no meu perfil</a></h4>
                 <hr>
               </figure>
               </div>

@@ -1,19 +1,29 @@
-<%-- 
-    Document   : cadastroator
-    Created on : 14/12/2017, 21:44:34
-    Author     : Danilo
---%>
-
+<%@page import="com.domain.web.Atores"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    String ErrorMessage = null;
+    if(request.getParameter("Ator")!= null){
+        String nome = request.getParameter("nm_ator");
+        double nascimento = Double.parseDouble("dt_nascimentoString");
+        String nacionalidade = request.getParameter("ds_nacionalidade");
+        try{
+            Atores.addAtores (nome, nascimento, nacionalidade);
+            response.sendRedirect(request.getRequestURI());
+        }
+        catch (Exception e){
+            ErrorMessage = e.getMessage();
+        }
+    }
+%>
 <html lang="pt-br">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="I.A,inteligência artificial, tensorflow, redes neurais, aprendizado de máquina, machine learning">
+    <meta name="keywords" content="I.A,inteligÃªncia artificial, tensorflow, redes neurais, aprendizado de mÃ¡quina, machine learning">
     <meta name="author" content="Rodrigo Garcia Topan Moreira">
-    <meta name="description" content="Páginal Inicial de Apresentação do projeto">
+    <meta name="description" content="PÃ¡ginal Inicial de ApresentaÃ§Ã£o do projeto">
     <title>Projeto Filmes</title>
     <link rel="stylesheet" type="text/css" href="css/projeto2.css">
     <!-- Bootstrap CSS -->

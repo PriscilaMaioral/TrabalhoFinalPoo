@@ -1,8 +1,4 @@
-<%-- 
-    Document   : listafilmes
-    Created on : 14/12/2017, 02:34:09
-    Author     : Danilo
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

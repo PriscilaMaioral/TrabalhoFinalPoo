@@ -1,8 +1,3 @@
-<%-- 
-    Document   : cadastrofilme
-    Created on : Dec 10, 2017, 5:03:06 AM
-    Author     : LuizV1
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,7 +33,7 @@
                             <div class="card">
                               <div class="jumbotron">
                                     <!--form cadastro ator-->
-                                  <form action="cadastro_ator.jsp" method="post">
+                                  <form action="cadastroator.jsp" method="post">
                                     <div class="form-group">
                                          <label for="c_nome_filme">Nome do filme</label>
                                          <input type="text" class="form-control" name="c_nome_filme" placeholder="Digite o nome do ator">

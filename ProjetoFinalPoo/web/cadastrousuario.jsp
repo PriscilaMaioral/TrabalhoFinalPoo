@@ -1,8 +1,4 @@
-<%-- 
-    Document   : cadastrousuario
-    Created on : 14/12/2017, 21:50:19
-    Author     : Danilo
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
